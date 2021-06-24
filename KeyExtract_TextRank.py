@@ -1,12 +1,11 @@
-#!/usr/bin/python
-# coding=utf-8
+# -*- coding: utf-8 -*-
 # 采用TextRank方法提取文本关键词
 import sys
 import pandas as pd
 import jieba.analyse
 
 """
-       TextRank权重：
+        采用TextRank方法提取文本关键词。TextRank权重：
 
             1、将待抽取关键词的文本进行分词、去停用词、筛选词性
             2、以固定窗口大小(默认为5，通过span属性调整)，词之间的共现关系，构建图

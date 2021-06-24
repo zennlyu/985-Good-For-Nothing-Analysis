@@ -102,6 +102,6 @@ class DbscanClustering():
 
 
 if __name__ == '__main__':
-    dbscan = DbscanClustering(stopwords_path='../data/stop_words.txt')
-    result = dbscan.dbscan('../data/comments.txt', eps=0.05, min_samples=3)
+    dbscan = DbscanClustering(stopwords_path='data/stopwords.txt')
+    result = dbscan.dbscan('data/comments.txt', eps=0.05, min_samples=3)
     print(result)

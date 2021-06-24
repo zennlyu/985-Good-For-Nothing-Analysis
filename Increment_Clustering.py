@@ -1,20 +1,18 @@
-# 增量聚类的写法
-# 没有考虑时间问题
-# 只考虑了出现频率
+# -*- coding: utf-8 -*-
 import jieba
-from string import digits  # 用于去除文本中弱智的数字年份。。
+from string import digits   # 用于去除文本中弱智的数字年份。。
 
-yu = 70  # 聚类算法距离的阈值，这个值越高话题越集中
+yu = 70                     # 聚类算法距离的阈值，这个值越高话题越集中
 words_aggretion = []
-setofword = set()  # 定义话题集合
+setofword = set()           # 定义话题集合
 
 
-def stopwordslist():  # 去除停止词
+def stopwordslist():        # 去除停止词
     stopwords = [line.strip() for line in open('data/stopwords.txt', encoding='UTF-8').readlines()]
     return stopwords
 
 
-def seg_depart(m):  # 分词与预处理
+def seg_depart(m):          # 分词与预处理
     # 对文档中的每一行进行中文分词
     remove_digits = str.maketrans('', '', digits)
     res = m.translate(remove_digits)
@@ -37,7 +35,7 @@ def seg_depart(m):  # 分词与预处理
     return s
 
 
-def max(l):  # 取列表中的最大值
+def max(l):                 # 取列表中的最大值
     m = 0
     for i in range(len(l)):
         if m < l[i]:
@@ -46,7 +44,7 @@ def max(l):  # 取列表中的最大值
     return m, x
 
 
-def Pab(word, a, b):  # 求Pab=Fab/Fb
+def Pab(word, a, b):        # 求Pab=Fab/Fb
     Fb = 0
     Fab = 0
     for i in range(len(words_aggretion)):
@@ -59,9 +57,9 @@ def Pab(word, a, b):  # 求Pab=Fab/Fb
     return P_ab
 
 
-def increment_clustering(word):  # 增量聚类
-    fkey = ''  # 第一个词有可能不是话题，需要加入判断
-    for key in word:  # 聚类
+def increment_clustering(word):     # 增量聚类
+    fkey = ''                       # 第一个词有可能不是话题，需要加入判断
+    for key in word:                # 聚类
         if not len(setofword):
             setofword.add(key)
             fkey = key
@@ -73,7 +71,7 @@ def increment_clustering(word):  # 增量聚类
             dis = 1 / P_max
             if dis >= yu:
                 setofword.add(key)
-    for key in word:  # 判断第一个词是不是话题，若不是则从话题集合中去除
+    for key in word:                # 判断第一个词是否为话题，若不是则从话题集合中去除
         P = []
         P.append(Pab(word, fkey, key))
         P_max, w = max(P)
@@ -84,7 +82,7 @@ def increment_clustering(word):  # 增量聚类
     return setofword
 
 
-def loadfile():  # 加载文件，并将所有句子分好词的列表生成出现频率的字典加入wo列表中
+def loadfile():                     # 加载文件，并将所有句子分好词的列表生成出现频率的字典加入 wo 列表中
     word = {}
     for i in range(1, 34):
         file = open('./train/C4-Literature/C4-Literature%d.txt' % i, 'r', encoding='gbk')
@@ -118,4 +116,5 @@ for i in range(len(st)):
 words_aggretion.append(sentence)
 file.close()
 x = increment_clustering(sentence)
-print("话题主题词为：", x)
+
+print("该文本话题主题词为：", x)
