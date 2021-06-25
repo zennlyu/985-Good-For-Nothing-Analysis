@@ -14,7 +14,7 @@ df = df.iloc[:706, :]
 
 
 # 连接Neo4j服务
-graph = Graph(host="localhost://7474", auth=("neo4j", "jc147369"))
+graph = Graph(host="localhost:127.0.0.1", auth=("neo4j", "jc147369"))
 
 # 创建节点
 nodes = set(df['S'].tolist()+df['O'].tolist())

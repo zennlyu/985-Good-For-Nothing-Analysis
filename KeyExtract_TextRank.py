@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# 采用TextRank方法提取文本关键词
+
 import sys
 import pandas as pd
 import jieba.analyse
