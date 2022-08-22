@@ -12,9 +12,11 @@ df = pd.read_excel('shendiaoxialv.xlsx')
 # 取前610行作为图谱数据
 df = df.iloc[:706, :]
 
-
+uri = "bolt://localhost:7687"
 # 连接Neo4j服务
-graph = Graph(host="localhost:127.0.0.1", auth=("neo4j", "jc147369"))
+# graph = Graph(host="localhost:127.0.0.1", auth=("neo4j", "jc147369"))
+graph = Graph(uri, auth=("neo4j","password"))
+# graph = Graph(scheme="bolt", host="localhost", port=11004, secure=True, auth=('neo4j', 'password'))
 
 # 创建节点
 nodes = set(df['S'].tolist()+df['O'].tolist())

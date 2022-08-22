@@ -3,7 +3,7 @@
 import jieba
 from string import digits   # 用于去除文本中弱智的数字年份。。
 
-yu = 70                     # 聚类算法距离的阈值，这个值越高话题越集中
+yu = 50                     # 聚类算法距离的阈值，这个值越高话题越集中
 words_aggretion = []
 setofword = set()           # 定义话题集合
 

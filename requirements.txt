@@ -3,3 +3,5 @@ pandas
 matplotlib
 cnsenti
 sklearn
+py2neo
+snownlp
