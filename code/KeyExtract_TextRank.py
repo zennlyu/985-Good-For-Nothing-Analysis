@@ -19,7 +19,7 @@ def getKeywords_textrank(data, topK):
     ids, titles, keys = [], [], []
     for index in range(len(idList)):
         text = '%s。%s' % (titleList[index], abstractList[index])  # 拼接标题和摘要
-        jieba.analyse.set_stop_words("data/stopWord.txt")  # 加载自定义停用词表
+        jieba.analyse.set_stop_words("../data/stopWords.txt")  # 加载自定义停用词表
         print("\"", titleList[index], "\"", " 10 Keywords - TextRank :")
         keywords = jieba.analyse.textrank(text, topK=topK,
                                           allowPOS=('n', 'nz', 'v', 'vd', 'vn', 'l', 'a', 'd'))  # TextRank关键词提取，词性筛选
@@ -34,10 +34,10 @@ def getKeywords_textrank(data, topK):
 
 
 def main():
-    dataFile = 'data/sample_data.csv'
+    dataFile = '../data/sample_data.csv'
     data = pd.read_csv(dataFile)
     result = getKeywords_textrank(data, 10)
-    result.to_csv("result/keys_TextRank.csv", index=False, encoding="utf-8")
+    result.to_csv("../result/keys_TextRank.csv", index=False, encoding="utf-8")
 
 
 if __name__ == '__main__':

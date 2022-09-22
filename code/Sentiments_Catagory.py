@@ -19,7 +19,7 @@ print(result_emotion)
 print(result_sentiment)
 print(result_sentiment_calculate)
 
-source = open("data/comments.txt", "r", encoding='utf-8')
+source = open("../data/comments.txt", "r", encoding='utf-8')
 line = source.readlines()
 sentimentslist = []
 for i in line:

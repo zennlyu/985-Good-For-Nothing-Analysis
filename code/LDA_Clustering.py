@@ -77,5 +77,5 @@ class LDAClustering():
 
 if __name__ == '__main__':
     LDA = LDAClustering()
-    ret = LDA.lda('data/comments.txt', stopwords_path='data/stopwords.txt', max_iter=100, n_components=2)
+    ret = LDA.lda('../data/comments.txt', stopwords_path='../data/stopwords.txt', max_iter=100, n_components=2)
     print(ret)
