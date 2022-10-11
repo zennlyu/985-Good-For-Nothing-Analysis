@@ -2,6 +2,14 @@
 
 
 
+## 0. Dependencies install
+
+```sh
+pip install -r requirements.txt
+```
+
+
+
 ## 1. Research Objectives
 
 本作业希望回答以下问题
